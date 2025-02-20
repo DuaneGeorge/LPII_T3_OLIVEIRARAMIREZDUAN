@@ -14,7 +14,7 @@
         <a th:href="@{/registrar_medico}" class="btn btn-primary w-50">NUEVO MÉDICO</a>
         
         <!-- Tabla de usuarios -->
-        <table class="table table-hover table-light">
+        <table class="table table-hover table-bordered border-primary">
             <thead>
                 <tr>
                     <th>Codigo</th>
@@ -38,8 +38,8 @@
 					<td th:text="${user.fechaNacimiento}"></td>								
 					
                     <td>
-                        <a th:href="@{/detalle_usuario/{id}(id=${user.idMedicoT3})}" class="btn btn-info">Ver</a>
-                        <a th:href="@{/editar_usuario/{id}(id=${user.idMedicoT3})}" class="btn btn-warning">Editar</a>
+                        <a th:href="@{/detalle_medico/{id}(id=${user.idMedicoT3})}" class="btn btn-info">Ver</a>
+                        <a th:href="@{/editar_medico/{id}(id=${user.idMedicoT3})}" class="btn btn-warning">Editar</a>
 						<a th:href="@{/delete/{id}(id=${user.idMedicoT3})}" class="btn btn-danger"
 						                           onclick="return confirmarEliminacion(event, this)">Eliminar</a>
                     </td>

@@ -63,5 +63,20 @@ public class MedicoController {
 			medicoService.crearMedico(user);
 			return "redirect:/";
 		}
+		
+		//METODO EDITAR USUARIO
+		@GetMapping("/editar_medico/{id}")
+		public String mostrarEditarMedico(@PathVariable("id") Integer id, Model model) {
+			MedicoEntity medicoEncontrado = medicoService.buscarMedicoPorId(id);
+			model.addAttribute("user", medicoEncontrado);
+			return "editar_medico";
+		}//fin del metodo editar
+		
+		//METODO EDITAR USUARIO MODIFICANDO DATOS EN LA BD
+		@PostMapping("/editar_medico/{id}")
+		public String editarMedico(@PathVariable("id")Integer id, @ModelAttribute("user") MedicoEntity user, Model model) {
+			medicoService.actualizarMedico(id, user);
+			return "redirect:/";
+		}//fin del metodo editar en la BD
 
 }

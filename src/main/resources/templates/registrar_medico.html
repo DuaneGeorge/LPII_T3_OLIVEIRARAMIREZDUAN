@@ -3,57 +3,71 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Registro de Medicos</title>
+    <title>Registro de Médicos</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        .form-container {
+            width: 50%;
+            margin: 0 auto;
+            margin-top: 50px;
+            padding: 20px;
+            background: #959faa;
+            border-radius: 10px;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+        }
+    </style>
 </head>
 <body>
     <div class="container">
-        <h2>Registrar Médico</h2>
-        
-        <div th:if="${errorMessage}" class="alert alert-danger" role="alert">
-            <span th:text="${errorMessage}"></span>
-        </div>
-
-        <form th:action="@{/registrar_medico}" th:object="${user}" method="post">
-            <div class="form-group">
-                <label for="nombre">Nombre:</label>
-                <input type="text" class="form-control" id="nombre" th:field="*{nombre}" placeholder="Ingrese su nombre">
+        <div class="form-container">
+            <h2 class="text-center">Registrar Médico</h2>
+            
+            <div th:if="${errorMessage}" class="alert alert-danger" role="alert">
+                <span th:text="${errorMessage}"></span>
             </div>
-			
-			<div class="form-group">
-			    <label for="apellido">Apellido:</label>
-			    <input type="text" class="form-control" id="apellido" th:field="*{apellido}" placeholder="Ingrese su apellido">
-			</div>
-			
-			<div class="form-group">
-			     <label for="email">E-mail:</label>
-			     <input type="email" class="form-control" id="email" th:field="*{email}" placeholder="Ingrese su email">
-			 </div>
-			
-			 <div class="form-group">
-			     <label for="estadoCivil">Estado:</label>
-			     <select class="form-control" id="estadoCivil" th:field="*{estadoCivil}">
-			         <option value="">Seleccione su estado civil</option>
-			         <option value="Soltero">Soltero</option>
-			         <option value="Casado">Casado</option>
-			         <option value="Viudo">Viudo</option>
-			     </select>
-			 </div>
-			
-			<div class="form-group">
-			      <label for="dni">DNI:</label>
-			      <input type="text" class="form-control" id="dni" th:field="*{dni}" placeholder="Ingrese su DNI">
-			</div>
 
-			<div class="form-group">
-			    <label for="fechaNacimiento">Fecha Nac.:</label>
-			    <input type="date" class="form-control" id="fechaNacimiento" th:field="*{fechaNacimiento}">
-			</div>
+            <form th:action="@{/registrar_medico}" th:object="${user}" method="post">
+                <div class="form-group">
+                    <label for="nombre">Nombre:</label>
+                    <input type="text" class="form-control" id="nombre" th:field="*{nombre}" placeholder="Ingrese su nombre">
+                </div>
+                
+                <div class="form-group">
+                    <label for="apellido">Apellido:</label>
+                    <input type="text" class="form-control" id="apellido" th:field="*{apellido}" placeholder="Ingrese su apellido">
+                </div>
+                
+                <div class="form-group">
+                    <label for="email">E-mail:</label>
+                    <input type="email" class="form-control" id="email" th:field="*{email}" placeholder="Ingrese su email">
+                </div>
+                
+                <div class="form-group">
+                    <label for="estadoCivil">Estado Civil:</label>
+                    <select class="form-control" id="estadoCivil" th:field="*{estadoCivil}">
+                        <option value="">Seleccione su estado civil</option>
+                        <option value="Soltero">Soltero</option>
+                        <option value="Casado">Casado</option>
+                        <option value="Viudo">Viudo</option>
+                    </select>
+                </div>
+                
+                <div class="form-group">
+                    <label for="dni">DNI:</label>
+                    <input type="text" class="form-control" id="dni" th:field="*{dni}" placeholder="Ingrese su DNI">
+                </div>
 
+                <div class="form-group">
+                    <label for="fechaNacimiento">Fecha Nac.:</label>
+                    <input type="date" class="form-control" id="fechaNacimiento" th:field="*{fechaNacimiento}">
+                </div>
 
-            <a th:href="@{/}" class="btn btn-secondary">Regresar</a>
-            <button type="submit" class="btn btn-primary">Guardar</button>
-        </form>
+                <div class="text-center">
+                    <a th:href="@{/}" class="btn btn-secondary">Regresar</a>
+                    <button type="submit" class="btn btn-primary">Guardar</button>
+                </div>
+            </form>
+        </div>
     </div>
 </body>
 </html>

@@ -36,11 +36,24 @@ public class MedicoServiceImpl implements MedicoService {
 		medicoRepository.save(medicoEntity);
 	}
 
-	@Override
-	public void actualizarMedico(Integer id, MedicoEntity medicoEntity) {
-		// TODO Auto-generated method stub
-		
-	}
+	//METODO ACTUALIZAR
+		@Override
+		public void actualizarMedico(Integer id, MedicoEntity medicoNuevo) {
+			// TODO Auto-generated method stub
+			MedicoEntity medicoEncontrado = buscarMedicoPorId(id);
+			if (medicoEncontrado == null) {
+				throw new RuntimeException("Medico no encontrado");			
+			}try {
+				medicoEncontrado.setNombre(medicoNuevo.getNombre());
+				medicoEncontrado.setApellido(medicoNuevo.getApellido());
+				medicoEncontrado.setDni(medicoNuevo.getDni());
+				medicoEncontrado.setEstadoCivil(medicoNuevo.getEstadoCivil());
+				medicoEncontrado.setFechaNacimiento(medicoNuevo.getFechaNacimiento());
+				medicoRepository.save(medicoEncontrado);
+			} catch (Exception e) {
+				throw new RuntimeException("Ocurrio un error al actualizar");
+			}		
+		}
 
 	@Override
 	public void eliminarMedico(Integer id) {

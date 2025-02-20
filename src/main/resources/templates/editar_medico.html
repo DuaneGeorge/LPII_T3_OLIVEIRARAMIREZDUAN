@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Editar Médico</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+<body>
+    <div class="container">
+        <h2>Editar Médico</h2>
+        
+        <div th:if="${errorMessage}" class="alert alert-danger" role="alert">
+            <span th:text="${errorMessage}"></span>
+        </div>
+
+        <form th:action="@{'/editar_medico/' + ${user.idMedicoT3 != null ? user.idMedicoT3 : id}}" th:object="${user}" method="post">
+            <div class="form-group">
+                <label for="nombre">Nombre:</label>
+                <input type="text" class="form-control" id="nombre" th:field="*{nombre}" placeholder="Ingrese su nombre">
+            </div>
+			
+			<div class="form-group">
+			                <label for="nombre">Apellido:</label>
+			                <input type="text" class="form-control" id="apellido" th:field="*{apellido}" placeholder="Ingrese su apellido">
+			            </div>
+
+            <div class="form-group">
+                <label for="email">Email:</label>
+                <input type="email" class="form-control" id="email" th:field="*{email}" placeholder="Ingrese su email">
+            </div>
+
+            <div class="form-group">
+                <label for="dni">DNI:</label>
+                <input type="text" class="form-control" id="dni" th:field="*{dni}" placeholder="Ingrese su DNI">
+            </div>						
+						
+			<div class="form-group">
+				<label for="estadoCivil">Estado:</label>
+					<select class="form-control" id="estadoCivil" th:field="*{estadoCivil}">
+						<option value="">Seleccione su estado civil</option>
+						<option value="Soltero">Soltero</option>
+						<option value="Casado">Casado</option>
+						<option value="Viudo">Viudo</option>
+					</select>
+			</div>
+									 
+			<div class="form-group">
+				<label for="fechaNacimiento">Fecha Nac.:</label>
+				<input type="date" class="form-control" id="fechaNacimiento" th:field="*{fechaNacimiento}">
+			</div>					 
+
+            <a th:href="@{/}" class="btn btn-secondary">Cancelar</a>
+            <button type="submit" class="btn btn-primary">Guardar cambios</button>
+        </form>
+    </div>
+</body>
+</html>
