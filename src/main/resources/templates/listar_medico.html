@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CRUD con Thymeleaf y Bootstrap</title>
+    <!-- Estilos de Bootstrap -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+<body>
+    <div class="container">
+        <h2>Listado de Medicos</h2>
+        
+        <a th:href="@{/registrar_medico}" class="btn btn-primary">Nuevo Medico</a>
+        
+        <!-- Tabla de usuarios -->
+        <table class="table mt-4">
+            <thead>
+                <tr>
+                    <th>Codigo</th>
+					<th>Nombre</th>
+					<th>Apellido</th>
+					<th>Email</th>
+					<th>DNI</th>
+					<th>Estado Civil</th>
+					<th>Fecha de Nac</th>
+                    <th>Acciones</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr th:each="user : ${lst_medico}">
+                    <td th:text="${user.idMedicoT3}"></td>
+                    <td th:text="${user.nombre}"></td>
+					<td th:text="${user.apellido}"></td>
+					<td th:text="${user.email}"></td>
+					<td th:text="${user.dni}"></td>
+                    <td th:text="${user.EstadoCivil}"></td>
+					<td th:text="${user.fechaNacimiento}"></td>								
+					
+                    <td>
+                        <a th:href="@{/detalle_usuario/{id}(id=${user.idMedicoT3})}" class="btn btn-info">Ver</a>
+                        <a th:href="@{/editar_usuario/{id}(id=${user.idMedicoT3})}" class="btn btn-warning">Editar</a>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <!-- Scripts de Bootstrap y jQuery -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>
