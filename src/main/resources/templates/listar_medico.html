@@ -8,10 +8,10 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
 </head>
 <body>
-    <div class="container">
+    <div class="container text-center">
         <h2>Listado de Medicos</h2>
         
-        <a th:href="@{/registrar_medico}" class="btn btn-primary">Nuevo Medico</a>
+        <a th:href="@{/registrar_medico}" class="btn btn-primary w-50">NUEVO MÉDICO</a>
         
         <!-- Tabla de usuarios -->
         <table class="table mt-4">
@@ -40,6 +40,8 @@
                     <td>
                         <a th:href="@{/detalle_usuario/{id}(id=${user.idMedicoT3})}" class="btn btn-info">Ver</a>
                         <a th:href="@{/editar_usuario/{id}(id=${user.idMedicoT3})}" class="btn btn-warning">Editar</a>
+						<a th:href="@{/delete/{id}(id=${user.idMedicoT3})}" class="btn btn-danger"
+						                           onclick="return confirmarEliminacion(event, this)">Eliminar</a>
                     </td>
                 </tr>
             </tbody>
@@ -50,5 +52,16 @@
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+	
+	<!-- Script de confirmación de eliminación -->
+	    <script>
+	        function confirmarEliminacion(event, elemento) {
+	            event.preventDefault(); // Evita que el enlace se ejecute inmediatamente
+	            let confirmacion = confirm("¿Desea eliminar el registro?");
+	            if (confirmacion) {
+	                window.location.href = elemento.href; // Redirige si el usuario confirma
+	            }
+	        }
+	    </script>
 </body>
 </html>
